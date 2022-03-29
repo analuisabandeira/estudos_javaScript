@@ -145,3 +145,23 @@ button[disabled=disabled], button:disabled {
 
 	color: red;
 }
+
+.filtrar-tabela {
+
+	display: flex;
+	margin-bottom: 30px;
+	width: 50%;
+	align-items: center;
+}
+
+#filtrar-tabela {
+
+	width: 200px;
+	height: 20px;
+	margin-left: 10px;
+}
+
+.remove-paciente {
+
+	display: none;
+}

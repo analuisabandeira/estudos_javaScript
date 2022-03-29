@@ -5,6 +5,5 @@ pacientes.forEach(function(paciente) {
     paciente.addEventListener("dblclick", function () {
 
        this.remove();
-       console.log("oi");
     });
 });
