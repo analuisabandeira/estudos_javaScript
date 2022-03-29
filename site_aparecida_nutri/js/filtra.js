@@ -4,17 +4,17 @@ campoFiltro.addEventListener("input", function() {
 
     var pacientes = document.querySelectorAll(".paciente");
 
-    if (this.value.length > 0) {
+    if (campoFiltro.value.length > 0) {
 
         pacientes.forEach(function(paciente) {
 
             var tdNome = paciente.querySelector(".info-nome");
             var nome = tdNome.textContent;
 
-            if (nome != this.value) {
+            if (nome != campoFiltro.value) {
 
                 paciente.classList.add("remove-paciente");
-                
+
             } else {
 
                 paciente.classList.remove("remove-paciente");
