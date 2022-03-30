@@ -1,6 +1,6 @@
 var botaoAdicionar = document.querySelector("#adicionar-paciente");
 
-botaoAdicionar.addEventListener("click", function (event) {
+botaoAdicionar.addEventListener("click", function(event) {
 
     event.preventDefault();
 
@@ -21,7 +21,7 @@ botaoAdicionar.addEventListener("click", function (event) {
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
-
+    
     form.reset();
 
     var mensagensDeErro = document.querySelector("#mensagens-erro");

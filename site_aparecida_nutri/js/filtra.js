@@ -4,7 +4,7 @@ campoFiltro.addEventListener("input", function() {
 
     var pacientes = document.querySelectorAll(".paciente");
 
-    if (campoFiltro.value.length > 0) {
+    if (this.value.length > 0) {
 
         pacientes.forEach(function(paciente) {
 
