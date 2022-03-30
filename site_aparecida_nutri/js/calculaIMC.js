@@ -3,38 +3,38 @@ title.textContent = "Aparecida Nutricionista";
 
 const pacientes = document.querySelectorAll(".paciente");
 
-for (let i = 0; i < pacientes.length ; i++) {
+// for (let i = 0; i < pacientes.length ; i++) {
 
-    const paciente = pacientes [i];
+//     const paciente = pacientes [i];
 
-    const tdPeso = paciente.querySelector (".info-peso");
-    const peso = tdPeso.textContent;
-    const pesoValido = validaPeso(peso);
+//     const tdPeso = paciente.querySelector (".info-peso");
+//     const peso = tdPeso.textContent;
+//     const pesoValido = validaPeso(peso);
 
-    const tdAltura = paciente.querySelector (".info-altura");
-    const altura = tdAltura.textContent;
-    const alturaValida = validaAltura(altura);
+//     const tdAltura = paciente.querySelector (".info-altura");
+//     const altura = tdAltura.textContent;
+//     const alturaValida = validaAltura(altura);
 
-    const tdIMC = paciente.querySelector(".info-imc");
+//     const tdIMC = paciente.querySelector(".info-imc");
 
-    if (!pesoValido) {
+//     if (!pesoValido) {
         
-        tdIMC.textContent = "Peso Inválido!";
-        paciente.classList.add("paciente-invalido");
-    }
+//         tdIMC.textContent = "Peso Inválido!";
+//         paciente.classList.add("paciente-invalido");
+//     }
 
-    if (!alturaValida) {
+//     if (!alturaValida) {
         
-        tdIMC.textContent = "Altura Inválida!";
-        paciente.classList.add("paciente-invalido");
-    }
+//         tdIMC.textContent = "Altura Inválida!";
+//         paciente.classList.add("paciente-invalido");
+//     }
 
-    if (pesoValido && alturaValida) {
+//     if (pesoValido && alturaValida) {
 
-        const valorIMC = calculaIMC(peso, altura);
-        tdIMC.textContent = valorIMC;
-    }   
-}
+//         const valorIMC = calculaIMC(peso, altura);
+//         tdIMC.textContent = valorIMC;
+//     }   
+// }
 
 function validaPeso(peso) {
 
@@ -55,7 +55,7 @@ function validaAltura(altura) {
 
 function calculaIMC (peso,altura) {
 
-    const imc = 0;
+    let imc = 0;
 
     imc = peso / (altura * altura);
 

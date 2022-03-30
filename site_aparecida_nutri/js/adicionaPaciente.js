@@ -1,6 +1,8 @@
 const corpoTabela = document.querySelector("#tabela-pacientes");
 const paciente = document.querySelectorAll(".paciente");
 
+let estaEmOrdemAlfabetica = true;
+
 const todosPacientes = [
 
     {
@@ -8,7 +10,7 @@ const todosPacientes = [
         peso: 100,
         altura: 2.00,
         gordura: 10,
-        // imc: calculaIMC(paciente.peso,paciente.altura)
+        imc: 0
     },
 
     {
@@ -46,16 +48,48 @@ const todosPacientes = [
 
 todosPacientes.sort(function(a,b) {
 
-    if (a.nome < b.nome) {
-        return -1;
-    } else {
-        return true;
+    if (a.nome > b.nome) {  
+        return 1;
     }
+
+    if (a.nome < b.nome) {  
+        return -1;
+    }
+
+    return 0;
 });
 
 todosPacientes.forEach(function(paciente) {
+    paciente.imc = calculaIMC(paciente.peso, paciente.altura)
 
     const pacienteTr =  montaTr(paciente);
     corpoTabela.appendChild(pacienteTr);
 });
 
+
+
+
+// FORMAS ALTERNATIVAS **************
+// todosPacientesImcCalculados = todosPacientes.map(function (paciente) {
+//     return {
+//         nome: paciente.nome,
+//         peso: paciente.peso,
+//         altura: paciente.altura,
+//         gordura: paciente.gordura,
+//         imc: calculaIMC(paciente.peso, paciente.altura)
+//     }
+// })
+
+// todosPacientesImcCalculados = todosPacientes.map(function (paciente) {
+//     return {
+//         ...paciente,
+//         imc: calculaIMC(paciente.peso, paciente.altura)
+//     }
+// })
+
+// todosPacientesImcCalculados.forEach(function(paciente) {
+//     // paciente.imc = calculaIMC(paciente.peso, paciente.altura)
+
+//     const pacienteTr =  montaTr(paciente);
+//     corpoTabela.appendChild(pacienteTr);
+// });

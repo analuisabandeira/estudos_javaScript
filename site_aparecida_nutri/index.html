@@ -26,12 +26,12 @@
 			<table>
 				<thead>
 					<tr>
-						<th class="nomeTh">Nome</th>
+						<th class="nomeTh" onclick="ordenarePorNome(event)">Nome</th>
 						<th>Peso(kg)</th>
 						<th>Altura(m)</th>
 						<th>Gordura Corporal(%)</th>
 						<th>IMC</th>
-						<!-- <th>Excluir Paciente</th> -->
+						<th>Excluir Paciente</th>
 					</tr>
 				</thead>
 				<tbody id="tabela-pacientes">
@@ -67,9 +67,10 @@
 			<button id="adicionar-paciente" class="botao bto-principal">Adicionar</button>
 		</form>
 	</section>
+	<script src="js/funcoes.js"></script>
 	<script src="js/calculaIMC.js"></script>
-	<script src="js/form.js"></script>
 	<script src="js/removerPaciente.js"></script>
+	<script src="js/form.js"></script>
 	<script src="js/filtra.js"></script>
 	<script src="js/adicionaPaciente.js"></script>
 </body>

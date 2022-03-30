@@ -70,13 +70,34 @@ td, th {
 th{
 	font-weight: bold;
 	background-color: #EEE;
+
+	transition: 0.2s ease;
+}
+
+th:hover {
+	background-color: #0c8cd3;
+	cursor: pointer;
 }
 
 .botao-excluir {
 
-	width: 1px;
-	height: 1px;
+	padding: 10px 10px;
+	background-color: red;
+
+	color: #FFF;
+
+	border-radius: 8px;
+	border: none;
 	
+	cursor: pointer;
+
+	transition: 0.2s ease;
+
+}
+
+.botao-excluir:hover {
+	
+	transform: translateX(5px);
 }
 
 label{
@@ -105,7 +126,7 @@ label{
 	padding: 10px 0px;
 }
 
-button{
+.bto-principal{
 	padding: .5em 2em;
 	border: 0;
 	border-bottom: 3px solid;
@@ -123,12 +144,12 @@ button{
 
 }
 
-button:active{
+.bto-principal:active{
 	margin-top:0px;
 	border: 0;
 }
 
-button[disabled=disabled], button:disabled {
+.bto-principal[disabled=disabled], .bto-principal:disabled {
     background-color: gray;
 	border-color: darkgray;
 

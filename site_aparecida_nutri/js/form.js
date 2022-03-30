@@ -1,37 +1,6 @@
 const botaoAdicionar = document.querySelector("#adicionar-paciente");
 
-
-botaoAdicionar.addEventListener("click", function(event) {
-
-    event.preventDefault();
-
-    const form = document.querySelector("#form-adiciona-paciente");
-   
-    const paciente = obtemPacienteDoFormulario(form);
-
-    const pacienteTr = montaTr(paciente);
-
-    const erros = validaPaciente(paciente);
-
-
-    if (erros.length > 0) {
-        
-        exibeMensagemDeErro(erros);
-        return;
-    }
-
-    const validaNome = validaNomePaciente(paciente,form);
-
-    const tabela = document.querySelector("#tabela-pacientes");
-
-    tabela.appendChild(pacienteTr);
-    
-    form.reset();
-
-    const mensagensDeErro = document.querySelector("#mensagens-erro");
-    mensagensDeErro.innerHTML = " ";
-    
-});
+atribuirEventoClickNumElemento(botaoAdicionar, funcaoAdicionarNeguinho, "click");
 
 function obtemPacienteDoFormulario(form) {
 
@@ -43,6 +12,7 @@ function obtemPacienteDoFormulario(form) {
         gordura: form.gordura.value,
         imc: calculaIMC (form.peso.value, form.altura.value)
     }
+
     return paciente;    
 }
 
@@ -56,6 +26,7 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.gordura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
+    pacienteTr.appendChild(montaTdBotaoExcluir());
    
 
     return pacienteTr;
@@ -66,6 +37,25 @@ function montaTd(dado,classe) {
     const td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe);
+
+    return td;
+}
+
+function montaTdBotaoExcluir() {
+
+    const td = document.createElement("td");
+    const botaoExcluir = document.createElement("button");
+
+    botaoExcluir.classList.add("botao-excluir");
+    botaoExcluir.textContent = "Mandar pra vala"
+
+
+    // Outra forma de fazer
+    // td.innerHTML = `<button class="botao-excluir">Mandar para a vala</button>`;
+
+    atribuirEventoClickNumElemento(botaoExcluir, funcaoDeDeletar, "click");
+
+    td.appendChild(botaoExcluir);
 
     return td;
 }
@@ -121,13 +111,20 @@ function exibeMensagemDeErro (erros) {
     });
 }
 
-function validaNomePaciente (paciente, form) {
+function validaNomePaciente (paciente) {
+    let existe = false;
 
-    const nomePaciente = paciente.querySelectorAll(".info-nome");
+    const pacientes = document.querySelectorAll(".paciente");
+
+    pacientes.forEach(function (nego) {
+            
+            if (nego.querySelector(".info-nome").textContent.toLocaleLowerCase() == paciente.nome.toLocaleLowerCase()) {
     
-    if (nomePaciente.textContent == form.nome.value) {
+                existe = true;
+            }
+    })
 
-        alert(`O paciente já foi inserido na tabela!`);
-}
+    return existe;
+    
 }
 
