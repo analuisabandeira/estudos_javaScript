@@ -72,6 +72,13 @@ th{
 	background-color: #EEE;
 }
 
+.botao-excluir {
+
+	width: 1px;
+	height: 1px;
+	
+}
+
 label{
 	color: #555;
 	display: block;

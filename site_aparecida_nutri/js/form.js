@@ -1,16 +1,18 @@
-var botaoAdicionar = document.querySelector("#adicionar-paciente");
+const botaoAdicionar = document.querySelector("#adicionar-paciente");
+
 
 botaoAdicionar.addEventListener("click", function(event) {
 
     event.preventDefault();
 
-    var form = document.querySelector("#form-adiciona-paciente");
+    const form = document.querySelector("#form-adiciona-paciente");
    
-    var paciente = obtemPacienteDoFormulario(form);
+    const paciente = obtemPacienteDoFormulario(form);
 
-    var pacienteTr = montaTr(paciente);
+    const pacienteTr = montaTr(paciente);
 
-    var erros = validaPaciente(paciente);
+    const erros = validaPaciente(paciente);
+
 
     if (erros.length > 0) {
         
@@ -18,20 +20,22 @@ botaoAdicionar.addEventListener("click", function(event) {
         return;
     }
 
-    var tabela = document.querySelector("#tabela-pacientes");
+    const validaNome = validaNomePaciente(paciente,form);
+
+    const tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
     
     form.reset();
 
-    var mensagensDeErro = document.querySelector("#mensagens-erro");
+    const mensagensDeErro = document.querySelector("#mensagens-erro");
     mensagensDeErro.innerHTML = " ";
     
 });
 
 function obtemPacienteDoFormulario(form) {
 
-    var paciente = {
+    const paciente = {
 
         nome: form.nome.value,
         peso: form.peso.value,
@@ -44,7 +48,7 @@ function obtemPacienteDoFormulario(form) {
 
 function montaTr(paciente) {
 
-    var pacienteTr = document.createElement("tr");
+    const pacienteTr = document.createElement("tr");
     pacienteTr.classList.add("paciente");
        
     pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
@@ -52,13 +56,14 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.gordura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
+   
 
     return pacienteTr;
 }
 
 function montaTd(dado,classe) {
 
-    var td = document.createElement("td");
+    const td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe);
 
@@ -67,7 +72,7 @@ function montaTd(dado,classe) {
 
 function validaPaciente(paciente) {
 
-    var erros = [];
+    const erros = [];
 
     if (paciente.nome.length == 0) {
 
@@ -105,14 +110,24 @@ function validaPaciente(paciente) {
 
 function exibeMensagemDeErro (erros) {
 
-    var listaDeErros = document.querySelector("#mensagens-erro");
+    const listaDeErros = document.querySelector("#mensagens-erro");
     listaDeErros.innerHTML = "";
 
     erros.forEach(function(erro) {
 
-        var itemListaDeErros = document.createElement("li");
+        const itemListaDeErros = document.createElement("li");
         itemListaDeErros.textContent = erro;
         listaDeErros.appendChild(itemListaDeErros);        
     });
+}
+
+function validaNomePaciente (paciente, form) {
+
+    const nomePaciente = paciente.querySelectorAll(".info-nome");
+    
+    if (nomePaciente.textContent == form.nome.value) {
+
+        alert(`O paciente já foi inserido na tabela!`);
+}
 }
 

@@ -1,16 +1,16 @@
-var campoFiltro = document.querySelector("#filtrar-tabela");
+const campoFiltro = document.querySelector("#filtrar-tabela");
 
 campoFiltro.addEventListener("input", function() {
 
-    var pacientes = document.querySelectorAll(".paciente");
+    const pacientes = document.querySelectorAll(".paciente");
 
     if (this.value.length > 0) {
 
         pacientes.forEach(function(paciente) {
 
-            var tdNome = paciente.querySelector(".info-nome");
-            var nome = tdNome.textContent;
-            var expressao = new RegExp(campoFiltro.value, "i")
+            const tdNome = paciente.querySelector(".info-nome");
+            const nome = tdNome.textContent;
+            const expressao = new RegExp(campoFiltro.value, "i")
 
             if (!expressao.test (nome)) {
 
