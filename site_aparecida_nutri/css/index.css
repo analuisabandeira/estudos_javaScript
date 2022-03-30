@@ -161,6 +161,12 @@ button[disabled=disabled], button:disabled {
 	margin-left: 10px;
 }
 
+.fade-out {
+
+	opacity: 0;
+	transition: 0.5s;
+}
+
 .remove-paciente {
 
 	display: none;

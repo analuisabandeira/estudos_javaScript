@@ -1,9 +1,15 @@
-var pacientes = document.querySelectorAll(".paciente");
+var tabela = document.querySelector("table");
 
-pacientes.forEach(function(paciente) {
+tabela.addEventListener("dblclick", function(event) {
 
-    paciente.addEventListener("dblclick", function () {
+    alvoEvento = event.target;
+    paiDoAlvo = alvoEvento.parentNode;
 
-       this.remove();
-    });
+    paiDoAlvo.classList.add("fade-out");
+
+    setTimeout (function() {
+
+        paiDoAlvo.remove();
+
+    }, 500);    
 });
