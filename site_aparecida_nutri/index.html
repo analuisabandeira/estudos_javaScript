@@ -6,6 +6,7 @@
 	<title>Aparecida Nutrição</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link href="https://fonts.googleapis.com/css2?family=Hurricane&family=Poppins:wght@100;300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 
 </head>
@@ -22,16 +23,16 @@
 			<h2>Meus pacientes</h2>
 			<div class="filtrar-tabela">
 				<label for="filtrar-tabela">Filtre:</label>
-				<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente">
+				<input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente" class="campo">
 			</div>
 			<table>
 				<thead>
 					<tr>
 						<th class="nomeTh" onclick="ordenarPorNome(event)">Nome</th>
 						<th onclick="ordenaPorPeso(event)">Peso(kg)</th>
-						<th onclick="ordenaPorGordura(event)">Altura(m)</th>
-						<th onclick="ordenaPorIMC(event)">Gordura Corporal(%)</th>
-						<th>IMC</th>
+						<th onclick="ordenaPorAltura(event)">Altura(m)</th>
+						<th onclick="ordenaPorGordura(event)">Gordura Corporal(%)</th>
+						<th onclick="ordenaPorIMC(event)">IMC</th>
 						<th>Excluir Paciente</th>
 					</tr>
 				</thead>
@@ -51,18 +52,17 @@
 			</div>
 			<div class="grupo">
 				<label for="peso">Peso:</label>
-				<input id="peso" name="peso" type="text" placeholder="digite o peso do seu paciente"
-					class="campo campo-medio">
+				<input id="peso" name="peso" type="text" placeholder="digite o peso do seu paciente" class="campo">
 			</div>
 			<div class="grupo">
 				<label for="altura">Altura:</label>
 				<input id="altura" name="altura" type="text" placeholder="digite a altura do seu paciente"
-					class="campo campo-medio">
+					class="campo">
 			</div>
 			<div class="grupo">
 				<label for="gordura">% de Gordura:</label>
 				<input id="gordura" type="text" placeholder="digite a porcentagem de gordura do seu paciente"
-					class="campo campo-medio">
+					class="campo">
 			</div>
 
 			<button id="adicionar-paciente" class="botao bto-principal">Adicionar</button>
@@ -73,7 +73,8 @@
 		<form id="form-remover-paciente">
 			<div class="grupo">
 				<label for="nome">Nome:</label>
-				<input class="input-remover-paciente" name="nome" type="text" placeholder="digite o nome do seu paciente" class="campo">
+				<input class="input-remover-paciente campo" name="nome" type="text"
+					placeholder="digite o nome do seu paciente" >
 			</div>
 			<button id="remover-paciente" class="botao bto-principal">Remover</button>
 

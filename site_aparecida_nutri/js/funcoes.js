@@ -6,19 +6,6 @@ const funcaoAdicionarNeguinho = function (event) {
 
     const paciente = obtemPacienteDoFormulario(form);
 
-    todosPacientes.push(paciente);
-
-    const pacienteTr = montaTr(paciente);
-
-    const erros = validaPaciente(paciente);
-
-
-    if (erros.length > 0) {
-
-        exibeMensagemDeErro(erros);
-        return;
-    }
-
     const validaNome = validaNomePaciente(paciente);
 
     if (validaNome) {
@@ -26,9 +13,15 @@ const funcaoAdicionarNeguinho = function (event) {
         return;
     }
 
-    const tabela = document.querySelector("#tabela-pacientes");
-    
-    tabela.appendChild(pacienteTr);
+    const erros = validaPaciente(paciente);
+
+    if (erros.length > 0) {
+
+        exibeMensagemDeErro(erros);
+        return;
+    }
+
+    todosPacientes.push(paciente);
 
     form.reset();
 
@@ -215,7 +208,6 @@ function ordenaPorGordura(event) {
         corpoTabela.appendChild(pacienteTr);
     });
 }
-//AAAAAAH AAAAAAAH TROUBLE TROUBLE TROUBLE!!!
 
 function ordenaPorIMC(event) {
 
@@ -252,14 +244,17 @@ function ordenaPorIMC(event) {
     });
 }
 
-function removePaciente(event) {
+//AAAAAAH AAAAAAAH TROUBLE TROUBLE TROUBLE!!!
 
-    event.preventDefault();
+
+function removePaciente() {
 
     const tabela = document.querySelector("#tabela-pacientes");
     const pacientes = tabela.querySelectorAll(".paciente");
-    const inputRemoverPaciente = document.querySelector(".input-remover-paciente");
-
+    const inputRemoverPaciente = function (event) {
+        event.preventDefault();
+    }
+    
     pacientes.forEach(function (paciente) {
 
         if (paciente.nome.toLocaleLowerCase() == inputRemoverPaciente.value.toLocaleLowerCase()) {
@@ -272,7 +267,5 @@ function removePaciente(event) {
             return;
         }
     });
-
-
 }
 

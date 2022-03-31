@@ -4,32 +4,30 @@
 }
 
 body{
-	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-	font-size: 15px;
+
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
 }
 
 header{
 	background-color: #0c4b20;
 	width: 100%;
-	height: 4em;
+	height: 5em;
 	color: #FFF;
 	padding: 1em;
 }
 
 header h1{
-	font-size: 2em;
-	display:inline-block;
+	font-size: 2.5em;
 	vertical-align:	middle;
 }
 header h2{
-	font-size: 2em;
-	display:inline-block;
-	vertical-align:	middle;
+	font-size: 3em;
+	
 }
 
 header .container:before{
 	content: '';
-	display:inline-block;
 	height: 100%;
 	vertical-align:	middle;
 }
@@ -49,10 +47,9 @@ section{
 }
 
 section h2{
-	font-size: 3em;
-	display: block;
-	padding-bottom: .5em;
-	border-bottom: 1px solid #ccc;
+	font-size: 2.5em;
+	padding-bottom: .2em;
+	border-bottom: 2px dotted rgb(10, 78, 20);
 	margin-bottom: .5em;
 }
 
@@ -64,16 +61,17 @@ table{
 }
 
 td, th {
+
 	padding: .7em;
 	margin: 0;
 	border: 1px solid #ccc;
 	text-align: center;
+	vertical-align: middle;
 }
 
 th{
 	font-weight: bold;
 	background-color: #EEE;
-
 	transition: 0.2s ease;
 }
 
@@ -100,9 +98,10 @@ th:hover {
 }
 
 label{
-	color: #555;
-	display: block;
-	margin-bottom: .2em;
+	color: #000000;
+	width: 10%;
+	font-size: 16px;
+	margin-right: 10px;
 }
 
 .campo{
@@ -111,18 +110,34 @@ label{
 	width: 100%;
 	border: 1px solid #ccc;
 	padding: .7em;
+	color: #000000;
+}
+
+.campo:focus {
+
+	outline-color: #034412;
+}
+
+
+
+#form-adiciona-paciente {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px;
+	row-gap: 20px;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+.grupo {
+
+	display: flex;
 	width: 100%;
-}
-
-.campo-medio{
-	display: inline-block;
-	padding-right: .5em;
-}
-
-.grupo{
-	width: 32%;
-	display: inline-block;
-	padding: 10px 0px;
+	align-items: center;
+	justify-content: space-between;
+	color: #000000;
 }
 
 .bto-principal{
@@ -139,9 +154,14 @@ label{
 	border-color: #034412;
     clear: both;
     margin: 10px 0px;
-	height: 50px;
-	width: 10%;
+	width: 60%;
+	transition: 1s;
+	
+}
 
+.bto-principal:hover {
+
+	background: #034412;
 }
 
 .bto-principal:active{
@@ -185,10 +205,8 @@ label{
 
 #filtrar-tabela {
 
-	width: 200px;
-	height: 20px;
 	margin-left: 10px;
-	padding: 10px;
+	padding: .7em;
 }
 
 .fade-out {
@@ -205,7 +223,14 @@ label{
 #form-remover-paciente {
 
 	display: flex;
-	align-items: center
+	align-items: center;
+	width: 100%;
+}
+
+.input-remover-paciente {
+
+	width: 100%;
+	padding: .7em;	
 }
 
 #remover-paciente {
@@ -214,6 +239,12 @@ label{
 	background: red;
 	border-bottom: 3px solid;
 	border-color: #560101;
+	transition: 1s;
+}
+
+#remover-paciente:hover {
+
+	background: #750505;
 }
 
 
