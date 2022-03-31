@@ -5,11 +5,11 @@
 
 body{
 	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 header{
-	background-color: #333;
+	background-color: #0c4b20;
 	width: 100%;
 	height: 4em;
 	color: #FFF;
@@ -35,6 +35,9 @@ header .container:before{
 }
 
 .container{
+
+	display: flex;
+	flex-direction: column;
 	width: 60%;
 	height: 100%;
 	margin: 20px auto;
@@ -75,24 +78,20 @@ th{
 }
 
 th:hover {
-	background-color: #0c8cd3;
+	background-color: #0c4b20;
+	color: white;
 	cursor: pointer;
 }
 
 .botao-excluir {
 
 	padding: 10px 10px;
-	background-color: red;
-
+	background-color: rgb(7, 111, 36);
 	color: #FFF;
-
 	border-radius: 8px;
-	border: none;
-	
+	border: none;	
 	cursor: pointer;
-
 	transition: 0.2s ease;
-
 }
 
 .botao-excluir:hover {
@@ -127,20 +126,21 @@ label{
 }
 
 .bto-principal{
-	padding: .5em 2em;
+	
+	padding: 10px;
 	border: 0;
 	border-bottom: 3px solid;
-	font-size: 1.2em;
+	border-radius: 10px;
+	font-size: 15px;
 	cursor: pointer;
 	margin: 0;
-	margin-top: -3px;
 	color: #fff;
-	background-color:#0c8cd3;
-	border-color: #04324c;
-	width: 20%;
-    display: block;
+	background-color: rgb(7, 111, 36);
+	border-color: #034412;
     clear: both;
     margin: 10px 0px;
+	height: 50px;
+	width: 10%;
 
 }
 
@@ -180,6 +180,7 @@ label{
 	margin-bottom: 30px;
 	width: 50%;
 	align-items: center;
+
 }
 
 #filtrar-tabela {
@@ -187,6 +188,7 @@ label{
 	width: 200px;
 	height: 20px;
 	margin-left: 10px;
+	padding: 10px;
 }
 
 .fade-out {
@@ -199,3 +201,19 @@ label{
 
 	display: none;
 }
+
+#form-remover-paciente {
+
+	display: flex;
+	align-items: center
+}
+
+#remover-paciente {
+
+	margin-left: 10px;
+	background: red;
+	border-bottom: 3px solid;
+	border-color: #560101;
+}
+
+

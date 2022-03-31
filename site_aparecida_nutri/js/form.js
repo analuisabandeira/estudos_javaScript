@@ -24,7 +24,7 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
     pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
     pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
-    pacienteTr.appendChild(montaTd(paciente.gordura, "info-altura"));
+    pacienteTr.appendChild(montaTd(paciente.gordura + "%", "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
     pacienteTr.appendChild(montaTdBotaoExcluir());
    
@@ -47,7 +47,7 @@ function montaTdBotaoExcluir() {
     const botaoExcluir = document.createElement("button");
 
     botaoExcluir.classList.add("botao-excluir");
-    botaoExcluir.textContent = "Mandar pra vala"
+    botaoExcluir.textContent = "Remover"
 
 
     // Outra forma de fazer

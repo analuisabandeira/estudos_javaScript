@@ -1,7 +1,8 @@
 const title = document.querySelector(".title");
 title.textContent = "Aparecida Nutricionista";
 
-const pacientes = document.querySelectorAll(".paciente");
+
+// const pacientes = document.querySelectorAll(".paciente");
 
 // for (let i = 0; i < pacientes.length ; i++) {
 

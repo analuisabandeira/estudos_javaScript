@@ -1,5 +1,3 @@
-const tabela = document.querySelector("table");
-
 // tabela.addEventListener("dblclick", function(event) {
 
 //     alvoEvento = event.target;
@@ -17,3 +15,7 @@ const tabela = document.querySelector("table");
 function atribuirEventoClickNumElemento(elemento, funcao, evento) {
     elemento.addEventListener(evento, funcao);
 }
+
+const botaoRemoverPaciente = document.querySelector("#remover-paciente");
+
+atribuirEventoClickNumElemento(botaoRemoverPaciente, removePaciente, "click");

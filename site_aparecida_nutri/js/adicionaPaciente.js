@@ -59,13 +59,15 @@ todosPacientes.sort(function(a,b) {
     return 0;
 });
 
+
 todosPacientes.forEach(function(paciente) {
-    paciente.imc = calculaIMC(paciente.peso, paciente.altura)
+
+    paciente.imc = calculaIMC(paciente.peso, paciente.altura);
 
     const pacienteTr =  montaTr(paciente);
+
     corpoTabela.appendChild(pacienteTr);
 });
-
 
 
 
