@@ -223,6 +223,49 @@ function ordenaPorIMC(event) {
     });
 }
 
+function ordenaTabela(event, coluna) {
+
+    const tabela = document.querySelector("#tabela-pacientes");
+    const pacientes = tabela.querySelectorAll(".paciente");
+
+    event.preventDefault();
+
+    estaEmOrdemCrescente = !estaEmOrdemCrescente;
+
+    pacientes.forEach(function (paciente) {
+        paciente.remove()
+    });
+
+    if (estaEmOrdemCrescente) {
+        todosPacientes.sort(function (a, b) {
+            if (a[coluna] > b[coluna]) {
+                return 1;
+            }
+
+            if (a[coluna] < b[coluna]) {
+                return -1;
+            }
+        });
+    } else {
+        todosPacientes.sort(function (a, b) {
+            if (a[coluna] < b[coluna]) {
+                return 1;
+            }
+
+            if (a[coluna] > b[coluna]) {
+                return -1;
+            }
+        });
+    }
+    
+    todosPacientes.forEach(function (paciente) {
+
+        paciente.imc = calculaIMC(paciente.peso, paciente.altura)
+        const pacienteTr = montaTr(paciente);
+        corpoTabela.appendChild(pacienteTr);
+    });
+}
+
 //AAAAAAH AAAAAAAH TROUBLE TROUBLE TROUBLE!!!
 
 function removePaciente(event) {
