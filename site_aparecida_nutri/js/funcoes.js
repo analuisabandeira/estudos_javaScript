@@ -1,37 +1,14 @@
-const funcaoAdicionarNeguinho = function (event) {
+// Função genérica que permite adicionar qualquer evento a um elemento; 
 
-    event.preventDefault();
+function atribuirEventoEmUmElemento(elemento, funcao, evento) {
 
-    const form = document.querySelector("#form-adiciona-paciente");
-
-    const paciente = obtemPacienteDoFormulario(form);
-
-    const validaNome = validaNomePaciente(paciente);
-
-    if (validaNome) {
-        alert(`O paciente já foi inserido na tabela!`);
-        return;
-    }
-
-    const erros = validaPaciente(paciente);
-
-    if (erros.length > 0) {
-
-        exibeMensagemDeErro(erros);
-        return;
-    }
-
-    todosPacientes.push(paciente);
-
-    form.reset();
-
-    const mensagensDeErro = document.querySelector("#mensagens-erro");
-    mensagensDeErro.innerHTML = " ";
-
+    elemento.addEventListener(evento, funcao);
 }
 
+// Atribui a função de deletar um paciente da tabela quando o botão "excluir" for clicado;
 
 const funcaoDeDeletar = function (event) {
+
     alvoEvento = event.target;
     paiDoAlvo = alvoEvento.parentNode;
     avoDoAlvo = paiDoAlvo.parentNode;
@@ -53,12 +30,14 @@ const funcaoDeDeletar = function (event) {
     }, 500);
 }
 
-function ordenarPorNome(event) {
+// Ordena os pacientes por ordem alfabética quando a <th> é clicada, e inverte a ordem quando novamente clicada.
+
+let estaEmOrdemAlfabetica = true;
+
+function ordenarPorNome() {
 
     const tabela = document.querySelector("#tabela-pacientes");
     const pacientes = tabela.querySelectorAll(".paciente");
-
-    event.preventDefault();
 
     estaEmOrdemAlfabetica = !estaEmOrdemAlfabetica;
 
@@ -67,6 +46,7 @@ function ordenarPorNome(event) {
     });
 
     if (estaEmOrdemAlfabetica) {
+
         todosPacientes.sort(function (a, b) {
             if (a.nome > b.nome) {
                 return 1;
@@ -75,7 +55,6 @@ function ordenarPorNome(event) {
             if (a.nome < b.nome) {
                 return -1;
             }
-
             return 0;
         });
     } else {
@@ -87,18 +66,19 @@ function ordenarPorNome(event) {
             if (a.nome < b.nome) {
                 return 1;
             }
-
             return 0;
         });
     }
 
     todosPacientes.forEach(function (paciente) {
-        paciente.imc = calculaIMC(paciente.peso, paciente.altura)
 
+        paciente.imc = calculaIMC(paciente.peso, paciente.altura);
         const pacienteTr = montaTr(paciente);
         corpoTabela.appendChild(pacienteTr);
     });
 }
+
+// Quando a <th> é clicadas, ordena a tabela em ordem crescente de acordo com o valor do dado do paciente (peso, altura, gordura ou IMC), e quando novamente clicada, ordena em ordem decrescente. 
 
 let estaEmOrdemCrescente = false;
 
@@ -165,7 +145,6 @@ function ordenaPorAltura(event) {
     }
 
     todosPacientes.forEach(function (paciente) {
-
         paciente.imc = calculaIMC(paciente.peso, paciente.altura)
         const pacienteTr = montaTr(paciente);
         corpoTabela.appendChild(pacienteTr);
@@ -246,26 +225,40 @@ function ordenaPorIMC(event) {
 
 //AAAAAAH AAAAAAAH TROUBLE TROUBLE TROUBLE!!!
 
+function removePaciente(event) {
 
-function removePaciente() {
+    event.preventDefault();
 
-    const tabela = document.querySelector("#tabela-pacientes");
-    const pacientes = tabela.querySelectorAll(".paciente");
-    const inputRemoverPaciente = function (event) {
-        event.preventDefault();
+    const pacientes = document.querySelectorAll(".paciente");
+
+    const form = document.querySelector("#form-remover-paciente");
+
+    const inputRemoverPaciente = document.querySelector("#input-remover-paciente");
+
+    const nomePaciente = inputRemoverPaciente.value;
+
+    const indexParaRemover = todosPacientes.findIndex(function (paciente) {
+
+        return paciente.nome == nomePaciente;
+
+    });
+
+    if (indexParaRemover == -1) {
+
+        alert(`O paciente não foi localizado!`);
+    } else {
+
+        todosPacientes.splice(indexParaRemover, 1);
+
+        pacientes[indexParaRemover].classList.add("fade-out");
+
+        setTimeout(function () {
+
+            pacientes[indexParaRemover].remove();
+
+         }, 500);
+
     }
     
-    pacientes.forEach(function (paciente) {
-
-        if (paciente.nome.toLocaleLowerCase() == inputRemoverPaciente.value.toLocaleLowerCase()) {
-
-            paciente.remove();
-            return;
-
-        } else {
-            alert(`O paciente não foi encontrado!`);
-            return;
-        }
-    });
-}
-
+    form.reset();
+};

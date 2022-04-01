@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Aparecida Nutrição</title>
+	<title>Aparecida Nutricionista</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link href="https://fonts.googleapis.com/css2?family=Hurricane&family=Poppins:wght@100;300&display=swap" rel="stylesheet">
@@ -73,7 +73,7 @@
 		<form id="form-remover-paciente">
 			<div class="grupo">
 				<label for="nome">Nome:</label>
-				<input class="input-remover-paciente campo" name="nome" type="text"
+				<input id="input-remover-paciente" class="campo" name="nome" type="text"
 					placeholder="digite o nome do seu paciente" >
 			</div>
 			<button id="remover-paciente" class="botao bto-principal">Remover</button>
@@ -81,10 +81,12 @@
 		</form>
 	</section>
 	<script src="js/funcoes.js"></script>
-	<script src="js/calculaIMC.js"></script>
+	<script src="js/validaPaciente.js"></script>
+	<script src="js/adicionaPacienteDoForm.js"></script>
+	<script src="js/montaTabela.js"></script>
 	<script src="js/removerPaciente.js"></script>
-	<script src="js/form.js"></script>
 	<script src="js/filtra.js"></script>
+	<script src="js/calculaIMC.js"></script>
 	<script src="js/adicionaPaciente.js"></script>
 </body>
 

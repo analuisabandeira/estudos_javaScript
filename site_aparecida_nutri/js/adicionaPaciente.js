@@ -1,7 +1,8 @@
 const corpoTabela = document.querySelector("#tabela-pacientes");
+
 const paciente = document.querySelectorAll(".paciente");
 
-let estaEmOrdemAlfabetica = true;
+// Montei um array com todos os pacientes, cada paciente é um objeto JS e tem propriedades que são comuns entre todos; 
 
 const todosPacientes = [
 
@@ -46,32 +47,45 @@ const todosPacientes = [
     }
 ];
 
-todosPacientes.sort(function(a,b) {
+function renderizarTabela() {
 
-    if (a.nome > b.nome) {  
-        return 1;
-    }
+    // Antes de adicionar o paciente à tabela, a ordeno por ordem alfabética através do método .sort() que recebe como parâmetro dois elementos (a,b) que serão comparados e o de menor índice sera apresentado em preferência. 
 
-    if (a.nome < b.nome) {  
-        return -1;
-    }
+    todosPacientes.sort(function (a, b) {
 
-    return 0;
-});
+        if (a.nome > b.nome) {
+            return 1;
+        }
+
+        if (a.nome < b.nome) {
+            return -1;
+        }
+        return 0;
+    });
+
+    // Itero pelo array que contém todos os pacientes e monto suas tr's, adicionando-os à tabela :)
+
+    todosPacientes.forEach(function (paciente) {
+
+        paciente.imc = calculaIMC(paciente.peso, paciente.altura);
+
+        const pacienteTr = montaTr(paciente);
+        corpoTabela.appendChild(pacienteTr);
+    });
+
+}
+
+renderizarTabela();
 
 
-todosPacientes.forEach(function(paciente) {
+// **** FORMAS ALTERNATIVAS DE CALCULAR O IMC DO OBJETO ****
 
-    paciente.imc = calculaIMC(paciente.peso, paciente.altura);
+// 1º) UTILIZANDO O LOOP .MAP
 
-    const pacienteTr =  montaTr(paciente);
+// O loop .map itera por todo o array, devolvendo um array com o mesmo número de elementos, mas com informações atualizadas - como um IMC calculado.
 
-    corpoTabela.appendChild(pacienteTr);
-});
+// =====> VEJA:
 
-
-
-// FORMAS ALTERNATIVAS **************
 // todosPacientesImcCalculados = todosPacientes.map(function (paciente) {
 //     return {
 //         nome: paciente.nome,
@@ -82,12 +96,17 @@ todosPacientes.forEach(function(paciente) {
 //     }
 // })
 
+// ====> OU:
+
 // todosPacientesImcCalculados = todosPacientes.map(function (paciente) {
 //     return {
-//         ...paciente,
-//         imc: calculaIMC(paciente.peso, paciente.altura)
+//         ...paciente, *esses "..." indicam que o que vem antes vai ficar inalterado
+//         imc: calculaIMC(paciente.peso, paciente.altura) *a alteração seria só no IMC ^^
 //     }
 // })
+
+
+// Depois iteramos com o loop forEach através do array com os pacientes com IMC's calculados e adicionamos estes na tabela :)
 
 // todosPacientesImcCalculados.forEach(function(paciente) {
 //     // paciente.imc = calculaIMC(paciente.peso, paciente.altura)
