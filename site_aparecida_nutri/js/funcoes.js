@@ -235,11 +235,11 @@ function removePaciente(event) {
 
     const inputRemoverPaciente = document.querySelector("#input-remover-paciente");
 
-    const nomePaciente = inputRemoverPaciente.value;
+    const nomePaciente = inputRemoverPaciente.value.toLocaleLowerCase();
 
     const indexParaRemover = todosPacientes.findIndex(function (paciente) {
 
-        return paciente.nome == nomePaciente;
+        return paciente.nome.toLocaleLowerCase() == nomePaciente;
 
     });
 
@@ -259,6 +259,6 @@ function removePaciente(event) {
          }, 500);
 
     }
-    
+
     form.reset();
 };
